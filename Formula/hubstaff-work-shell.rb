@@ -10,7 +10,11 @@ class HubstaffWorkShell < Formula
 
   def install
     libexec.install Dir["*"]
-    bin.write_exec_script libexec/"bin/hs"
+    wrapper = <<~'SH'
+      #!/bin/bash
+      exec "LIBEXEC_PLACEHOLDER/bin/hs" "$@"
+    SH
+    (bin/"hs").write wrapper.gsub("LIBEXEC_PLACEHOLDER", libexec.to_s)
   end
 
   test do

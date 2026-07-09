@@ -10,8 +10,11 @@ class PrivacyKit < Formula
 
   def install
     libexec.install Dir["*"]
-    # Use write_exec_script so argv is preserved (avoid Ruby $@ interpolation)
-    bin.write_exec_script libexec/"bin/pk"
+    wrapper = <<~'SH'
+      #!/bin/bash
+      exec "LIBEXEC_PLACEHOLDER/bin/pk" "$@"
+    SH
+    (bin/"pk").write wrapper.gsub("LIBEXEC_PLACEHOLDER", libexec.to_s)
   end
 
   test do
