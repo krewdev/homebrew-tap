@@ -1,8 +1,8 @@
 class PrivacyKit < Formula
   desc "Local macOS privacy audits — permissions, trackers, tunnels, listeners, MDM"
   homepage "https://github.com/krewdev/privacy-kit"
-  url "https://github.com/krewdev/privacy-kit/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "d35fc315973ecf017faea39ef7091d729140d8c8613765885879e65938b38e26"
+  url "https://github.com/krewdev/privacy-kit/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "33bdaff34c52b1e5ed20f0d505554ccf208fc8434f362363d2fe20eb5e796d00"
   license "MIT"
   head "https://github.com/krewdev/privacy-kit.git", branch: "main"
 
