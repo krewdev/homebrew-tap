@@ -10,10 +10,7 @@ class HubstaffWorkShell < Formula
 
   def install
     libexec.install Dir["*"]
-    (bin/"hs").write <<~EOS
-      #!/bin/bash
-      exec "#{libexec}/bin/hs" ""
-    EOS
+    bin.write_exec_script libexec/"bin/hs"
   end
 
   test do

@@ -10,10 +10,8 @@ class PrivacyKit < Formula
 
   def install
     libexec.install Dir["*"]
-    (bin/"pk").write <<~EOS
-      #!/bin/bash
-      exec "#{libexec}/bin/pk" ""
-    EOS
+    # Use write_exec_script so argv is preserved (avoid Ruby $@ interpolation)
+    bin.write_exec_script libexec/"bin/pk"
   end
 
   test do
